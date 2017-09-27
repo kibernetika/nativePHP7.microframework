@@ -2,3 +2,6 @@
 <p>
     Lorem ipsum...
 </p>
+<?php
+var_dump($data);
+?>

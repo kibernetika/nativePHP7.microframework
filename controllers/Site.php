@@ -15,12 +15,12 @@ class Site extends BaseController
 
     function actionIndex()
     {
-        $this->loadView('index', 'null');
+        $this->loadView('index', []);
     }
 
     function actionTest()
     {
-        $this->loadView('test', 'null');
+        $this->loadView('test', ['my_data' => 2323]);
     }
 
 }

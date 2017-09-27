@@ -27,8 +27,9 @@ abstract class BaseController
         echo 'It\'s default page';
     }
 
-    function loadView($view, $data = null)
+    function loadView($view, array $user_data = [])
     {
+        $data = array_merge($this->request_params, $user_data);
         $controller = $this->getControllerName();
         $this->view->loadPage($view, $controller, $data);
     }
