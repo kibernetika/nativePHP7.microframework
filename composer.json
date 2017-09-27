@@ -1,0 +1,19 @@
+{
+  "name": "deni/jobtest",
+  "description": "Test app on job",
+  "type": "project",
+  "license": "GNU",
+  "authors": [
+    {
+      "name": "Pasha Deni",
+      "email": "deni.ecybernetics@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "jobtest\\": ""
+    }
+  }
+}
