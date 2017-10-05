@@ -1,6 +1,6 @@
 {
   "name": "deni/jobtest",
-  "description": "Test app on job",
+  "description": "Microframework on native PHP 7.1",
   "type": "project",
   "license": "GNU",
   "authors": [
@@ -10,7 +10,8 @@
     }
   ],
   "minimum-stability": "dev",
-  "require": {},
+  "require": {
+  },
   "autoload": {
     "psr-4": {
       "jobtest\\": ""
