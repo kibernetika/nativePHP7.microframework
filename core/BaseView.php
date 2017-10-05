@@ -19,14 +19,6 @@ class BaseView
      * @var string
      */
     private $template;
-    /**
-     * @var string
-     */
-    private $view;
-    /**
-     * @var string
-     */
-    private $view_folder;
 
     public function __construct()
     {
