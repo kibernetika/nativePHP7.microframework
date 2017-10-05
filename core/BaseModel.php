@@ -9,6 +9,10 @@
 namespace jobtest\core;
 
 
+/**
+ * Class BaseModel
+ * @package jobtest\core
+ */
 abstract class BaseModel
 {
 

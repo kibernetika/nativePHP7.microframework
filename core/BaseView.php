@@ -9,26 +9,47 @@
 namespace jobtest\core;
 
 
+/**
+ * Class BaseView
+ * @package jobtest\core
+ */
 class BaseView
 {
+    /**
+     * @var string
+     */
     private $template;
+    /**
+     * @var string
+     */
     private $view;
+    /**
+     * @var string
+     */
     private $view_folder;
 
     function __construct()
     {
-        //Макет по умолчанию
-        $this->template = 'template';
+        $this->template = 'template'; //name file of page template - now is template.php
     }
 
-    function loadPage($view, $controller_name, $data = null)
+    /**
+     * @param $view_name
+     * @param string $controller_name
+     * @param array $data
+     */
+    function loadViewFile(string $view_name, string $controller_name, array $data): void
     {
-        $this->view = $view;
+        $this->view = $view_name;
         $this->view_folder = $this->getViewFolderFromControllerName($controller_name);
         include 'views/' . $this->template . '.php';
     }
 
-    function getViewFolderFromControllerName($controller_name): string
+    /**
+     * @param string $controller_name
+     * @return string
+     */
+    function getViewFolderFromControllerName(string $controller_name): string
     {
         $view_folder = strtolower($controller_name[0]);
         for ($i = 1; $i < mb_strlen($controller_name, "UTF-8"); $i++) {

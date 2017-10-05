@@ -9,11 +9,27 @@
 namespace jobtest\core;
 
 
+/**
+ * Class BaseController
+ * @package jobtest\core
+ */
 abstract class BaseController
 {
+    /**
+     * @var string
+     */
     public $model;
+    /**
+     * @var string
+     */
     public $view;
+    /**
+     * @var string
+     */
     public $controller;
+    /**
+     * @var array
+     */
     public $request_params;
 
     function __construct(array $request_params)
@@ -22,18 +38,25 @@ abstract class BaseController
         $this->request_params = $request_params;
     }
 
-    function actionIndex()
+    function actionIndex(): void
     {
         echo 'It\'s default page';
     }
 
-    function loadView($view, array $user_data = [])
+    /**
+     * @param string $view_name
+     * @param array $user_data
+     */
+    function loadView(string $view_name, array $user_data = []): void
     {
         $data = array_merge($this->request_params, $user_data);
         $controller = $this->getControllerName();
-        $this->view->loadPage($view, $controller, $data);
+        $this->view->loadViewFile($view_name, $controller, $data);
     }
 
+    /**
+     * @return string
+     */
     function getControllerName(): string
     {
         $file_name = static::class;

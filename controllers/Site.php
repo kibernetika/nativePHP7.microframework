@@ -13,12 +13,12 @@ use jobtest\core\BaseController;
 class Site extends BaseController
 {
 
-    function actionIndex()
+    function actionIndex(): void
     {
         $this->loadView('index', []);
     }
 
-    function actionTest()
+    function actionTest(): void
     {
         $this->loadView('test', ['my_data' => 2323]);
     }

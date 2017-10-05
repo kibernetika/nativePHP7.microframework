@@ -8,4 +8,5 @@
 
 namespace jobtest\core;
 
-Routed::routing();
+$router = new Router();
+$router->route();
