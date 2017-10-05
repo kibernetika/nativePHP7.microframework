@@ -28,7 +28,7 @@ class BaseView
      */
     private $view_folder;
 
-    function __construct()
+    public function __construct()
     {
         $this->template = 'template'; //name file of page template - now is template.php
     }
@@ -38,10 +38,10 @@ class BaseView
      * @param string $controller_name
      * @param array $data
      */
-    function loadViewFile(string $view_name, string $controller_name, array $data): void
+    public function loadViewFile(string $view_name, string $controller_name, array $data): void
     {
         $this->view = $view_name;
-        $this->view_folder = $this->getViewFolderFromControllerName($controller_name);
+        $this->view_folder = $this->getViewFolder($controller_name);
         include 'views/' . $this->template . '.php';
     }
 
@@ -49,10 +49,11 @@ class BaseView
      * @param string $controller_name
      * @return string
      */
-    function getViewFolderFromControllerName(string $controller_name): string
+    public function getViewFolder(string $controller_name): string
     {
         $view_folder = strtolower($controller_name[0]);
-        for ($i = 1; $i < mb_strlen($controller_name, "UTF-8"); $i++) {
+        $length_controller_name = mb_strlen($controller_name, "UTF-8");
+        for ($i = 1; $i < $length_controller_name; $i++) {
             $char = mb_substr($controller_name, $i, 1, "UTF-8");
             if (($char >= 'A') && ($char <= 'Z')) {
                 $char .= '-' . strtolower($char);

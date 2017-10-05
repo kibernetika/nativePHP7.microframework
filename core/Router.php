@@ -15,7 +15,7 @@ namespace jobtest\core;
 class Router
 {
 
-    function route(): void
+    public function route(): void
     {
         list($controller_name, $action_name) = $this->parseControllerAndActionFromURL();
         $this->includeFile("models/" . $controller_name . '.php');
@@ -40,14 +40,15 @@ class Router
         $controller_name = 'Site';
         $action_name = 'index';
         $routes = $_SERVER['REQUEST_URI'];
-        if ($paramsIsSet = strpos($routes, '?')) {
-            $routes = substr($routes, 0, $paramsIsSet);
+        $params_is_set = strpos($routes, '?');
+        if ($params_is_set) {
+            $routes = substr($routes, 0, $params_is_set);
         }
         $routes = explode('/', $routes);
         if (!empty($routes[1])) {
-            $controller_name = $this->getClassNameFromPartUrl($routes[1]);
+            $controller_name = $this->getClassNameFromUrl($routes[1]);
             if (!empty($routes[2])) {
-                $action_name = $this->getClassNameFromPartUrl($routes[2]);
+                $action_name = $this->getClassNameFromUrl($routes[2]);
             }
         }
         return array($controller_name, $action_name);
@@ -57,14 +58,14 @@ class Router
      * @param string $url
      * @return string
      */
-    private function getClassNameFromPartUrl(string $url): string
+    private function getClassNameFromUrl(string $url): string
     {
         $parts_url = explode('-', $url);
-        $className = '';
+        $class_name = '';
         foreach ($parts_url as $part) {
-            $className .= ucwords($part);
+            $class_name .= ucwords($part);
         }
-        return $className;
+        return $class_name;
     }
 
     /**
@@ -82,7 +83,7 @@ class Router
         return $result;
     }
 
-    function loadPage404(): void
+    public function loadPage404(): void
     {
         $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
         header('HTTP/1.1 404 Not Found');

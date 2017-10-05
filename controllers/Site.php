@@ -10,17 +10,21 @@ namespace jobtest\controllers;
 
 use jobtest\core\BaseController;
 
+/**
+ * Class Site
+ * @package jobtest\controllers
+ */
 class Site extends BaseController
 {
 
-    function actionIndex(): void
+    public function actionIndex(): void
     {
         $this->loadView('index', []);
     }
 
-    function actionTest(): void
+    public function actionTest(): void
     {
-        $this->loadView('test', ['my_data' => 2323]);
+        $this->loadView('test', ['my_data' => 'test param']);
     }
 
 }

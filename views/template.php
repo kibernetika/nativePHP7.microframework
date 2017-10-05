@@ -8,4 +8,3 @@
 <?php include 'views/' . $this->view_folder . '/' . $this->view . '.php'; ?>
 </body>
 </html>
-

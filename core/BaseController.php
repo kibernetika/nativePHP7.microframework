@@ -32,13 +32,13 @@ abstract class BaseController
      */
     public $request_params;
 
-    function __construct(array $request_params)
+    public function __construct(array $request_params)
     {
         $this->view = new BaseView();
         $this->request_params = $request_params;
     }
 
-    function actionIndex(): void
+    public function actionIndex(): void
     {
         echo 'It\'s default page';
     }
@@ -47,7 +47,7 @@ abstract class BaseController
      * @param string $view_name
      * @param array $user_data
      */
-    function loadView(string $view_name, array $user_data = []): void
+    public function loadView(string $view_name, array $user_data = []): void
     {
         $data = array_merge($this->request_params, $user_data);
         $controller = $this->getControllerName();
@@ -57,7 +57,7 @@ abstract class BaseController
     /**
      * @return string
      */
-    function getControllerName(): string
+    public function getControllerName(): string
     {
         $file_name = static::class;
         $controller_name = substr($file_name, strripos($file_name, '\\') + 1);

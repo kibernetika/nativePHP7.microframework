@@ -3,5 +3,6 @@
     Lorem ipsum...
 </p>
 <?php
-var_dump($data);
-?>
+foreach ($data as $param) {
+    echo($param . '<br>');
+}
