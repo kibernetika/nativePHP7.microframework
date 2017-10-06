@@ -6,6 +6,8 @@
  * Time: 14:05
  */
 
+namespace jobtest\core;
+
 error_reporting(0);
 
 // пользовательская функция для обработки ошибок
