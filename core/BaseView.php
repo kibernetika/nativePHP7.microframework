@@ -32,6 +32,7 @@ class BaseView
      */
     public function loadViewFile(string $view_name, string $controller_name, array $data): void
     {
+        //dynamically adding property on class user View
         $this->view = $view_name;
         $this->view_folder = $this->getViewFolder($controller_name);
         include 'views/' . $this->template . '.php';
